@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
+import secrets
 
 # Create flask and connection details
 app = Flask(__name__)
@@ -12,6 +13,9 @@ app.config['SECRET_KEY'] = 'KMrx5eSstVERwnFe7YUZCrG775p8VYfi'
 
 
 db = SQLAlchemy(app)
+
+# Generate a random access token
+access_token = secrets.token_hex(16)
 
 # Database table details
 class User(db.Model):
@@ -46,14 +50,13 @@ def token_required(f):
         if not token:
             return jsonify({'message': 'Authentication token is missing', 'data': {}}), 401
 
-        # Implement your token verification logic here
-        # Check if the token is valid and belongs to the correct user
+        #TODO: Implement token verification logic. Check if the token is valid and belongs to the correct user
 
         return f(*args, **kwargs)
 
     return decorated
 
-
+#SignUp
 @app.route('/user/signup', methods=['POST'])
 def signup():
     data = request.get_json()
@@ -71,8 +74,6 @@ def signup():
     if not password:
         return jsonify({'message': 'Password cannot be left blank', 'data': {}}), 400
 
-    # Validate email format
-    # You can use regular expressions or any email validation library for better validation
     if '@' not in email or '.' not in email:
         return jsonify({'message': 'Email is not valid', 'data': {}}), 400
 
@@ -90,7 +91,7 @@ def signup():
     return jsonify({
         'message': 'User signup complete',
         'data': {
-            'access_token': 'random_access_token',
+            'access_token': access_token,
             'user': {
                 'id': user.id,
                 'name': user.name,
@@ -99,6 +100,7 @@ def signup():
         }
     }), 200
 
+#Login
 @app.route('/user/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -108,6 +110,9 @@ def login():
 
     if not email:
         return jsonify({'message': 'Email cannot be left blank', 'data': {}}), 400
+
+    if '@' not in email or '.' not in email:
+        return jsonify({'message': 'Email is not valid', 'data': {}}), 400
 
     if not password:
         return jsonify({'message': 'Password cannot be left blank', 'data': {}}), 400
@@ -123,7 +128,7 @@ def login():
     return jsonify({
         'message': 'Login successful',
         'data': {
-            'access_token': 'random_access_token',
+            'access_token': access_token,
             'user': {
                 'id': user.id,
                 'name': user.name,
@@ -136,8 +141,7 @@ def login():
 @app.route('/user', methods=['GET'])
 @token_required
 def get_user():
-    # Retrieve user based on the access token
-    # Replace the implementation with your own logic to get the current user
+    #TODO: After Access Token is implemented, implement this
     user = User.query.get(1)
 
     if not user:
@@ -192,7 +196,7 @@ def list_contacts():
     limit = int(request.args.get('limit', 10))
     sort_by = request.args.get('sort_by', 'latest')
 
-    contacts_query = Contact.query.filter_by(user_id=1)  # Replace 1 with the user ID from the access token
+    contacts_query = Contact.query.filter_by(user_id=1)  #TODO: Replace 1 with the user ID from the access token
 
     if sort_by == 'latest':
         contacts_query = contacts_query.order_by(Contact.id.desc())
@@ -240,7 +244,7 @@ def search_contacts():
     email = request.args.get('email')
     phone = request.args.get('phone')
 
-    contacts_query = Contact.query.filter_by(user_id=1)  # Replace 1 with the user ID from the access token
+    contacts_query = Contact.query.filter_by(user_id=1)  #TODO Replace 1 with the user ID from the access token
 
     if sort_by == 'latest':
         contacts_query = contacts_query.order_by(Contact.id.desc())

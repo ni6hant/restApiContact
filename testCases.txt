@@ -1,0 +1,25 @@
+1. APIs to signup using name, email & password:
+
+Email Already Registered:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar", "email": "raj@example.com", "password": "samplepassword"}'
+
+Name cannot be left blank:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "", "email": "raj@example.com", "password": "samplepassword"}'
+
+Email is not valid:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar", "email": "rajexample.com", "password": "samplepassword"}'
+
+Successful Signup:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar2", "email": "raj2@example.com", "password": "samplepassword2"}'
+
+Successful Login:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example.com",    "password": "samplepassword"}'
+
+Invalid Credentials:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example.com",    "password": "wrongpassword"}'
+
+Email is not valid:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "rajexample.com",    "password": "samplepassword"}'
+
+Email is not registered:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example2.com",    "password": "samplepassword"}'
