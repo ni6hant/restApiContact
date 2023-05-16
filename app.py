@@ -202,6 +202,9 @@ def create_contact():
     if not name or not phone:
         return jsonify({'message': 'Name and phone are required', 'data': {}}), 400
 
+    if '@' not in email or '.' not in email:
+        return jsonify({'message': 'Email is not valid', 'data': {}}), 400
+
     user = User.query.get(g.decoded_token['id'])
     contact = Contact(name=name, phone=phone, email=email, address=address, country=country, user_id=user.id)
 
@@ -227,6 +230,9 @@ def list_contacts():
     page = int(request.args.get('page', 1))
     limit = int(request.args.get('limit', 10))
     sort_by = request.args.get('sort_by', 'latest')
+    name = request.args.get('name')
+    email = request.args.get('email')
+    phone = request.args.get('phone')
 
     user = User.query.get(g.decoded_token['id'])
     contacts_query = Contact.query.filter_by(user_id=user.id) 
@@ -239,6 +245,15 @@ def list_contacts():
         contacts_query = contacts_query.order_by(Contact.name.asc())
     elif sort_by == 'alphabetically_z_to_a':
         contacts_query = contacts_query.order_by(Contact.name.desc())
+
+    if name:
+        contacts_query = contacts_query.filter(Contact.name.ilike(f"%{name}%"))
+
+    if email:
+        contacts_query = contacts_query.filter(Contact.email.ilike(f'%{email}%'))
+
+    if phone:
+        contacts_query = contacts_query.filter(Contact.phone.ilike(f'%{phone}%'))
 
     contacts = contacts_query.paginate(page=page, per_page=limit)
 
@@ -277,7 +292,8 @@ def search_contacts():
     email = request.args.get('email')
     phone = request.args.get('phone')
 
-    contacts_query = Contact.query.filter_by(user_id=1)  #TODO Replace 1 with the user ID from the access token
+    user = User.query.get(g.decoded_token['id'])
+    contacts_query = Contact.query.filter_by(user_id=user.id)
 
     if sort_by == 'latest':
         contacts_query = contacts_query.order_by(Contact.id.desc())
@@ -289,13 +305,14 @@ def search_contacts():
         contacts_query = contacts_query.order_by(Contact.name.desc())
 
     if name:
-        contacts_query = contacts_query.filter(Contact.name.ilike(f'%{name}%'))
+        contacts_query = contacts_query.filter(Contact.name.ilike(f"%{name}%"))
 
     if email:
         contacts_query = contacts_query.filter(Contact.email.ilike(f'%{email}%'))
 
     if phone:
         contacts_query = contacts_query.filter(Contact.phone.ilike(f'%{phone}%'))
+    
 
     contacts = contacts_query.paginate(page=page, per_page=limit)
 

@@ -40,4 +40,44 @@ curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.
 
 4. API to create new contact
 
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer jkhrjkwehj245khk4j3h3kjhkj3hj4kj5h3k4jh5kljtrlkjnmdxnbxmnbdfsalksdfjlkds' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "john@example.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+Successful addition:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "john@example.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+
+Name Blank:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "",     "email": "john@example.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+
+Phone Blank:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "john@example.com",     "phone": "",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+
+Email Format Incorrect:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "johnexample.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+
+5. API to list all the contacts
+
+Default Page:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
+Page 2:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=2' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
+Limit 5:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&limit=5' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
+6. API to sort the contact by
+
+Latest
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=latest' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
+Oldest
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=oldest' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
+Alphabetically a-z
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=alphabetically_a_to_z' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
+Alphabetically z-a
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=alphabetically_z_to_a' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
+7. API to search a contact by name, email, phone:
+
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=oldest&limit=5&name=mandy&email=example.com&phone=99999999' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
