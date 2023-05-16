@@ -12,9 +12,9 @@ curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/si
 Successful Signup:
 curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar2", "email": "raj2@example.com", "password": "samplepassword2"}'
 
-Successful Login:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example.com",    "password": "samplepassword"}'
+2. API to login into the application
 
+Use Cases:
 Invalid Credentials:
 curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example.com",    "password": "wrongpassword"}'
 
@@ -23,3 +23,21 @@ curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/lo
 
 Email is not registered:
 curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example2.com",    "password": "samplepassword"}'
+
+Successful Login:
+curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj5@example.com",    "password": "samplepassword"}'
+
+3. API to get user's details
+
+User Details:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+
+Authentication Failed:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_XXXXXXXXX'
+
+Authorization Token Is Missing:
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user' --header 'Authorization: Bearer'
+
+4. API to create new contact
+
+curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer jkhrjkwehj245khk4j3h3kjhkj3hj4kj5h3k4jh5kljtrlkjnmdxnbxmnbdfsalksdfjlkds' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "john@example.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
