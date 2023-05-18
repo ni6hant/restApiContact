@@ -1,83 +1,83 @@
 1. APIs to signup using name, email & password:
 
 Email Already Registered:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar", "email": "raj@example.com", "password": "samplepassword"}'
+curl "https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar", "email": "raj@example.com", "password": "samplepassword"}'
 
 Name cannot be left blank:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "", "email": "raj@example.com", "password": "samplepassword"}'
+curl "https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "", "email": "raj@example.com", "password": "samplepassword"}'
 
 Email is not valid:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar", "email": "rajexample.com", "password": "samplepassword"}'
+curl "https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar", "email": "rajexample.com", "password": "samplepassword"}'
 
 Successful Signup:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar2", "email": "raj2@example.com", "password": "samplepassword2"}'
+curl "https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user/signup" --header "Content-Type: application/json" --data-raw '{ "name": "Raj Kumar2", "email": "raj2@example.com", "password": "samplepassword2"}'
 
 2. API to login into the application
 
 Use Cases:
 Invalid Credentials:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example.com",    "password": "wrongpassword"}'
+curl "https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example.com",    "password": "wrongpassword"}'
 
 Email is not valid:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "rajexample.com",    "password": "samplepassword"}'
+curl "https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "rajexample.com",    "password": "samplepassword"}'
 
 Email is not registered:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example2.com",    "password": "samplepassword"}'
+curl "https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj@example2.com",    "password": "samplepassword"}'
 
 Successful Login:
-curl "https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj5@example.com",    "password": "samplepassword"}'
+curl "https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user/login" --header 'Content-Type: application/json' --data-raw '{    "email": "raj5@example.com",    "password": "samplepassword"}'
 
 3. API to get user's details
 
 User Details:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
 Authentication Failed:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_XXXXXXXXX'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_XXXXXXXXX'
 
 Authorization Token Is Missing:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/user' --header 'Authorization: Bearer'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/user' --header 'Authorization: Bearer'
 
 4. API to create new contact
 
 Successful addition:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "john@example.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "john@example.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
 
 Name Blank:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "",     "email": "john@example.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "",     "email": "john@example.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
 
 Phone Blank:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "john@example.com",     "phone": "",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "john@example.com",     "phone": "",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
 
 Email Format Incorrect:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "johnexample.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU' --header 'Content-Type: application/json' --data-raw '{    "name": "John Deo",     "email": "johnexample.com",     "phone": "9909909902",    "country": "England",    "address": "12/90 Bakers Street, London, UK" }'
 
 5. API to list all the contacts
 
 Default Page:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
 Page 2:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=2' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact?page=2' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
 Limit 5:
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&limit=5' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact?page=1&limit=5' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
 6. API to sort the contact by
 
 Latest
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=latest' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact?page=1&sort_by=latest' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
 Oldest
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=oldest' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact?page=1&sort_by=oldest' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
 Alphabetically a-z
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=alphabetically_a_to_z' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact?page=1&sort_by=alphabetically_a_to_z' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
 Alphabetically z-a
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=alphabetically_z_to_a' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact?page=1&sort_by=alphabetically_z_to_a' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
 7. API to search a contact by name, email, phone:
 
-curl --location 'https://8f18-2405-201-a40f-60ad-d969-ae96-f335-aa7b.ngrok-free.app/contact?page=1&sort_by=oldest&limit=5&name=mandy&email=example.com&phone=99999999' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
+curl --location 'https://dc6f-2405-201-a40f-60ad-459d-892e-97ab-a938.ngrok-free.app/contact?page=1&sort_by=oldest&limit=5&name=mandy&email=example.com&phone=99999999' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJSYWogS3VtYXI1IiwiZW1haWwiOiJyYWo1QGV4YW1wbGUuY29tIn0.oeCToyYmd45_juRd_RthnniJltyBtkO-Y_N74mh4cKU'
 
